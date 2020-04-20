@@ -52,5 +52,4 @@ fabric.properties
 .idea/httpRequests
 
 artifacts
-VGG16_places365
 *.iml
