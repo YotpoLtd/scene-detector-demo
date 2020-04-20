@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.1.0-py3
+FROM python:3.6.5
 
 ENV SERVER_PORT 5000
 ENV SERVER_HOST 0.0.0.0
