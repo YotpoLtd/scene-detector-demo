@@ -35,5 +35,4 @@ jobs:
       script:
         - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master
         - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:latest
-        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master
-        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:latest
+        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:latest
