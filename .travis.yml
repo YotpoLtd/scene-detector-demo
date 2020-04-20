@@ -27,9 +27,9 @@ jobs:
       script:
         - docker build -t 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} --cache-from 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} -f Dockerfile .
         - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_COMMIT}
-        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:unsupervised-${TRAVIS_COMMIT}
+        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_COMMIT}
         - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_BRANCH}
-        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:unsupervised-${TRAVIS_BRANCH}
+        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_BRANCH}
     - stage: deploy
       if: branch = master
       script:
