@@ -12,16 +12,12 @@ from PIL import Image
 from cv2 import resize
 
 
-# The class we will use in our predictions - this is what is being saved to
-# MLFlow as the "Model" and uses an Artifact (xgboost model)
-
-
 class SceneryModel(mlflow.pyfunc.PythonModel):
     def __init__(self):
-        self.keras_model = None
+        self.vgg166_places = None
 
     def load_context(self, context):
-        self.keras_model = keras.models.load_model(context.artifacts["keras_model"])
+        self.vgg166_places = keras.models.load_model(context.artifacts["vgg166_places"])
 
     def predict(self, context, model_input):
         for index, row in model_input.iterrows():
@@ -33,7 +29,7 @@ class SceneryModel(mlflow.pyfunc.PythonModel):
             image = np.expand_dims(image, 0)
 
             predictions_to_return = 5
-            preds = self.keras_model.predict(image)[0]
+            preds = self.vgg166_places.predict(image)[0]
             top_preds = np.argsort(preds)[::-1][0:predictions_to_return]
 
             # load the class label
@@ -67,19 +63,11 @@ class SceneryModel(mlflow.pyfunc.PythonModel):
             'name': 'env'
         }
 
-        # Create an `artifacts` dictionary that assigns a unique name to the saved XGBoost model file.
-        # This dictionary will be passed to `mlflow.pyfunc.save_model`, which will copy the model file
-        # into the new MLflow Model's directory.
-
         artifacts = {
-            "keras_model": model_path,
+            "vgg166_places": model_path,
         }
 
         vgg_places = "VGG16_Places365"
         mlflow.pyfunc.save_model(vgg_places, python_model=self, artifacts=artifacts, conda_env=conda_env,
                                  code_path=['scenery_model.py'])
-        # mlflow.pyfunc.log_model(
-        #     artifact_path=vgg_places,
-        #     python_model=self,
-        #     artifacts=artifacts,
-        #     conda_env=conda_env)
+        mlflow.pyfunc.log_model(artifact_path=vgg_places, python_model=self, artifacts=artifacts, conda_env=conda_env)

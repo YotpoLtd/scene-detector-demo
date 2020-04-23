@@ -1,7 +1,7 @@
 flavors:
   python_function:
     artifacts:
-      keras_model:
+      vgg166_places:
         path: artifacts/keras_model.h5
         uri: artifacts/keras_model.h5
     cloudpickle_version: 1.3.0
@@ -10,4 +10,4 @@ flavors:
     loader_module: mlflow.pyfunc.model
     python_model: python_model.pkl
     python_version: 3.6.5
-utc_time_created: '2020-04-19 16:50:22.591572'
+utc_time_created: '2020-04-23 14:35:00.042856'

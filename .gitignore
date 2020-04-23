@@ -53,3 +53,4 @@ fabric.properties
 
 artifacts
 *.iml
+*/*/__pycache__/*

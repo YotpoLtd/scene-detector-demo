@@ -12,6 +12,7 @@ WORKDIR $WORKDIR
 COPY VGG16_Places365/ VGG16_Places365/
 COPY requirements.txt requirements.txt
 COPY scenery_model.py scenery_model.py
+COPY gunicorn_logging.conf gunicorn_logging.conf
 COPY entrypoint.sh /
 
 RUN pip install -r requirements.txt
