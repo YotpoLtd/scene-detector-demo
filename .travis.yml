@@ -10,16 +10,14 @@ env:
     - PROJECT_NAME=scene-detector
 
 before_install:
+  - ECR_HELPERS_PATH=https://s3.amazonaws.com/ops-yotpo/public/docker/ecr-login-helper
   - mkdir -p $HOME/bin
   - export PATH=$PATH:$HOME/bin
-  - wget https://s3.amazonaws.com/ops-yotpo/public/docker/ecr-login-helper/docker-credential-ecr-login -O $HOME/bin/docker-credential-ecr-login
+  - curl -L $ECR_HELPERS_PATH/docker-credential-ecr-login -o $HOME/bin/docker-credential-ecr-login
   - chmod +x $HOME/bin/docker-credential-ecr-login
   - mkdir -p $HOME/.docker/
-  - mkdir -p $HOME/.ssh/
-  - wget https://s3.amazonaws.com/ops-yotpo/public/docker/ecr-login-helper/config.json -O $HOME/.docker/config.json
-  - git config --global url."git@gitlab.com:".insteadOf "https://gitlab.com/"
-  - git config --global url."git@github.com:".insteadOf "https://github.com/"
-  - echo -e "Host *\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+  - curl -L $ECR_HELPERS_PATH/config.json -o $HOME/.docker/config.json
+  - docker images ${CONTAINER_REGISTRY_HOST}/${PROJECT}
 
 jobs:
   include:
