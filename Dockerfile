@@ -1,8 +1,6 @@
 FROM python:3.6.5
 
-ENV SERVER_PORT 5000
 ENV SERVER_HOST 0.0.0.0
-ENV WORKERS 1
 
 ENV WORKDIR /opt/scene-detector
 ENV PYTHONPATH /opt/scene-detector
