@@ -70,4 +70,5 @@ class SceneryModel(mlflow.pyfunc.PythonModel):
         vgg_places = "VGG16_Places365"
         mlflow.pyfunc.save_model(vgg_places, python_model=self, artifacts=artifacts, conda_env=conda_env,
                                  code_path=['scenery_model.py'])
-        mlflow.pyfunc.log_model(artifact_path=vgg_places, python_model=self, artifacts=artifacts, conda_env=conda_env)
+        mlflow.pyfunc.log_model(artifact_path=vgg_places, python_model=self, artifacts=artifacts, conda_env=conda_env,
+                                code_path=['scenery_model.py'])
