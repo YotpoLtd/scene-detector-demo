@@ -28,8 +28,8 @@ jobs:
         - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_COMMIT}
         - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_BRANCH}
         - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:${TRAVIS_BRANCH}
-    - stage: deploy
-      if: branch = master
-      script:
-        - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master
-        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master
+#    - stage: deploy
+#      if: branch = master
+#      script:
+#        - docker tag 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME} 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master
+#        - docker push 402837048690.dkr.ecr.us-east-1.amazonaws.com/${PROJECT_NAME}:master

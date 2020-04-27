@@ -52,5 +52,6 @@ fabric.properties
 .idea/httpRequests
 
 artifacts
+VGG16_Places365
 *.iml
 */*/__pycache__/*
