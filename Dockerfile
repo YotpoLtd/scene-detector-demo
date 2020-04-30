@@ -17,6 +17,5 @@ COPY wsgi.py wsgi.py
 COPY entrypoint.sh /
 
 EXPOSE $SERVER_PORT
-#EXEC
 
 ENTRYPOINT ["/entrypoint.sh"]
