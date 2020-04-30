@@ -8,11 +8,14 @@ ENV PYTHONPATH /opt/scene-detector
 WORKDIR $WORKDIR
 
 COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
 COPY scenery_model.py scenery_model.py
 COPY gunicorn_logging.conf gunicorn_logging.conf
+COPY gunicorn_conf.py gunicorn_conf.py
+COPY wsgi.py wsgi.py
 COPY entrypoint.sh /
 
-RUN pip install -r requirements.txt
 EXPOSE $SERVER_PORT
 #EXEC
 
