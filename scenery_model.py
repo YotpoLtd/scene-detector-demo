@@ -1,4 +1,5 @@
 # Define the model class
+import base64
 import os
 from io import BytesIO
 
@@ -21,9 +22,10 @@ class SceneryModel(mlflow.pyfunc.PythonModel):
 
     def predict(self, context, model_input):
         for index, row in model_input.iterrows():
-            image_url = row['image_url']
-            response = requests.get(image_url)
-            image = Image.open(BytesIO(response.content))
+            # image_url = row['image_url']
+            # response = requests.get(image_url)
+            decode_bytes = base64.b64decode(row['image_bytes'])
+            image = Image.open(BytesIO(decode_bytes))
             image = np.array(image, dtype=np.uint8)
             image = resize(image, (224, 224))
             image = np.expand_dims(image, 0)
