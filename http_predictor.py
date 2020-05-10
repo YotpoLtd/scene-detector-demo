@@ -17,4 +17,4 @@ if __name__ == "__main__":
                              data=model_input,
                              headers={"Content-Type": "application/json; format=pandas-split"})
 
-    print(response)
+    print(response.content)
