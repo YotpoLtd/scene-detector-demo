@@ -1,2 +1,4 @@
 # Scene-detector
-Scene detection in images using https://github.com/GKalliatakis/Keras-VGG16-places365 &amp; MLFlow
+Scene detection in images using https://github.com/GKalliatakis/Keras-VGG16-places365 &amp; MLFlow.
+
+A Demo Project for Spark Summit 2020

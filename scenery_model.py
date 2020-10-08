@@ -22,8 +22,6 @@ class SceneryModel(mlflow.pyfunc.PythonModel):
 
     def predict(self, context, model_input):
         for index, row in model_input.iterrows():
-            # image_url = row['image_url']
-            # response = requests.get(image_url)
             decode_bytes = base64.b64decode(row['image_bytes'])
             image = Image.open(BytesIO(decode_bytes))
             image = np.array(image, dtype=np.uint8)
